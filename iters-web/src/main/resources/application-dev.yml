@@ -1,0 +1,61 @@
+#服务器配置
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 3600s
+    context-path: /iters
+  max-http-header-size: 10000000
+spring:
+  application:
+    name: iters
+  #时间格式处理
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  #接收时间类型参数
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  #数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      name: datasource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/iters?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&serverTimezone=PRC&useSSL=false
+      username: root
+      password: 12345678
+      initial-size: 2
+      min-idle: 2
+      max-active: 30
+      max-wait: 10000
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123456
+      web-stat-filter:
+        exclusions: /*.js,/*.gif,/*.jpg,/*.png,/*.css,/*.ico,/*.json,/druid/*
+      connection-init-sqls: SET NAMES utf8mb4;
+  thymeleaf:
+    prefix: classpath:/templates/
+#mybatis
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/mapper/*.xml,classpath*:/mapper/*/*.xml
+  global-config:
+    db-config:
+      db-type: mysql
+      id-type: ID_WORKER_STR
+      logic-delete-value: -1
+      logic-not-delete-value: 1
+    banner: false
+  type-aliases-package: com.xinghui.entity
+  type-enums-package: com.xinghui.enums
+
+## 日志
+logging:
+  level:
+    com:
+      mainsion: debug
+      xxl: warn
