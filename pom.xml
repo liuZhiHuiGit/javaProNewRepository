@@ -32,7 +32,7 @@
         <mybatisplus.version>3.0.3</mybatisplus.version>
         <swagger.version>2.7.0</swagger.version>
         <poi.version>3.2.0</poi.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <hutool.version>4.0.12</hutool.version>
     </properties>
 
